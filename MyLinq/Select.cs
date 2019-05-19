@@ -18,7 +18,7 @@ namespace MyLinq {
             return SelectIterator(source, selector);
         }
 
-        public static IEnumerable<TResult> SelectIterator<TSource, TResult>(
+        internal static IEnumerable<TResult> SelectIterator<TSource, TResult>(
             this IEnumerable<TSource> source,
             Func<TSource, TResult> selector) {
 
