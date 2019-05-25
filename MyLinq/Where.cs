@@ -6,7 +6,6 @@ namespace MyLinq {
         public static IEnumerable<TSource> Where<TSource>(
             this IEnumerable<TSource> source,
             Func<TSource, bool> predicate) {
-
             if (source == null) throw new ArgumentNullException(nameof(source));
 
             if (predicate == null) throw new ArgumentNullException(nameof(predicate));
@@ -17,7 +16,6 @@ namespace MyLinq {
         internal static IEnumerable<TSource> WhereImpl<TSource>(
             this IEnumerable<TSource> source,
             Func<TSource, bool> predicate) {
-
             foreach (var item in source)
                 if (predicate(item))
                     yield return item;

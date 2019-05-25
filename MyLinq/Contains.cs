@@ -6,7 +6,6 @@ namespace MyLinq {
         public static bool Contains<TSource>(
             this IEnumerable<TSource> source,
             TSource value) {
-
             if (source == null) throw new ArgumentNullException(nameof(source));
 
             if (value == null) throw new ArgumentNullException(nameof(value));
@@ -22,7 +21,6 @@ namespace MyLinq {
             this IEnumerable<TSource> source,
             TSource value,
             IEqualityComparer<TSource> comparer) {
-
             if (source == null) throw new ArgumentNullException(nameof(source));
 
             if (value == null) throw new ArgumentNullException(nameof(value));
