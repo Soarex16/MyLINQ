@@ -1,33 +1,26 @@
-﻿using System.Collections.Generic;
-using System;
+﻿using System;
+using System.Collections.Generic;
 
-namespace Where {
+namespace MyLinq {
     public static partial class Enumerable {
-        
         public static IEnumerable<TSource> Where<TSource>(
-            this IEnumerable<TSource> source, 
+            this IEnumerable<TSource> source,
             Func<TSource, bool> predicate) {
 
-            if (source == null) {
-                throw new ArgumentNullException("source");
-            }
+            if (source == null) throw new ArgumentNullException(nameof(source));
 
-            if (predicate == null) {
-                throw new ArgumentNullException("predicate");
-            }
+            if (predicate == null) throw new ArgumentNullException(nameof(predicate));
 
-            return WhereIterator(source, predicate);
+            return WhereImpl(source, predicate);
         }
 
-        internal static IEnumerable<TSource> WhereIterator<TSource>(
-            this IEnumerable<TSource> source, 
+        internal static IEnumerable<TSource> WhereImpl<TSource>(
+            this IEnumerable<TSource> source,
             Func<TSource, bool> predicate) {
 
-            foreach (var item in source) {
-                if (predicate(item)) {
+            foreach (var item in source)
+                if (predicate(item))
                     yield return item;
-                }
-            }
         }
     }
 }
